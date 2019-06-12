@@ -1,0 +1,15 @@
+<div>
+  <div cdkDropList class="left-container" #dropList="cdkDropList" [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">
+    <div>
+      <div style="padding:10px" *ngIf="componentService !== undefined" appAddComponent [component]="componentService"></div>
+    </div>
+  </div>
+</div>
+
+<div class="right-container">
+  <h2>Drag item from the list!!!</h2>
+  <div cdkDropList #ComponentList="cdkDropList" [cdkDropListData]="components" [cdkDropListConnectedTo]="[dropList]" class="example-list"
+    (cdkDragListDragged)="drag($event)">
+    <div class="example-box" *ngFor="let item of components" cdkDrag>{{item}}</div>
+  </div>
+</div>
